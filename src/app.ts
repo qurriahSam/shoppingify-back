@@ -1,15 +1,19 @@
 import express from 'express';
 import dotenv from 'dotenv';
 
+import { Items } from './modules/items/itemsModel';
+
+import { connectDB } from './db/server';
+connectDB();
+
 dotenv.config();
 const app = express();
+const PORT = process.env.PORT;
 
-// declare a route with a response
 app.get('/', (req, res) => {
   res.send('Hello world 2 test');
 });
 
-// start the server
-app.listen(process.env.BACK_PORT, () => {
-  console.log(`server running : http://${process.env.BACK_HOST}:${process.env.BACK_PORT}`);
+app.listen(PORT, (): void => {
+  console.log('Your app is listening on port ' + `${PORT}`);
 });
