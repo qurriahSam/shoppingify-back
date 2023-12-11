@@ -1,6 +1,5 @@
 export interface IItemName {
   name: string;
-  count: number;
   image: string;
   note: string;
 }
@@ -8,4 +7,21 @@ export interface IItemName {
 export interface ICategory {
   category: string;
   items: IItemName[];
+}
+
+interface IHistItems {
+  _id: string;
+  name: string;
+  complete: boolean;
+  count: number;
+}
+interface IShopItems {
+  category: string;
+  items: IHistItems[];
+}
+export interface IShopping {
+  title: string;
+  list: IShopItems[];
+  status: boolean;
+  date: Date;
 }

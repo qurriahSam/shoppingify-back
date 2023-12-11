@@ -7,7 +7,6 @@ const ItemSchema = new Schema<IItemName>({
   name: { type: String, required: true },
   image: String,
   note: String,
-  count: Number,
 });
 
 const CategorySchema = new Schema<ICategory>({

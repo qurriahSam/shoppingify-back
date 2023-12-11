@@ -1,9 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import { Category } from './itemsModel';
 
-export const getItems = async (req: Request, res: Response) => {
-  const items = await Category.find();
-  res.json(items);
+export const getItems = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const items = await Category.find();
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const addItem = async (req: Request, res: Response, next: NextFunction) => {
