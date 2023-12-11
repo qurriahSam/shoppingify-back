@@ -1,11 +1,15 @@
-import Express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { Category } from './itemsModel';
 
-export const getItems = (req: Express.Request, res: Express.Response) => {
+export const getItems = (req: Request, res: Response) => {
   res.send('Home');
 };
 
-export const postItems = async (req: Express.Request, res: Express.Response) => {
+export const postItems = async (req: Request, res: Response, next: NextFunction) => {
+  if (!req.body.category) {
+    return next(new Error('category cannot be empty'));
+  }
+
   const category = new Category({
     category: req.body.category,
     items: [],
@@ -19,6 +23,6 @@ export const postItems = async (req: Express.Request, res: Express.Response) => 
     });
     console.log(saveCategory);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    next(error);
   }
 };
