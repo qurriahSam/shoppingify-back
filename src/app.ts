@@ -11,9 +11,9 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT
 
-app.use(errorHandler)
-
 app.use(itemsRouter)
+
+app.use(errorHandler)
 
 app.listen(PORT, (): void => {
   console.log('Your app is listening on port ' + `${PORT}`)
