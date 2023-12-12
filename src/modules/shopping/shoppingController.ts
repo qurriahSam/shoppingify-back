@@ -12,7 +12,7 @@ export const getHistory = async (req: Request, res: Response, next: NextFunction
 
 export const getHistoryItems = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const historyItems = await HistoryShopping.findById(req.body.id).select('list');
+    const historyItems = await HistoryShopping.findById(req.body.id);
     res.json(historyItems);
   } catch (error) {
     next(error);
