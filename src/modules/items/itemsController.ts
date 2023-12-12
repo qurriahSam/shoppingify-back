@@ -25,7 +25,6 @@ export const addItem = async (req: Request, res: Response, next: NextFunction) =
     try {
       const saveCategory = await category.save();
       res.status(200).json(saveCategory);
-      console.log(saveCategory);
     } catch (error) {
       next(error);
     }
@@ -36,7 +35,11 @@ export const addItem = async (req: Request, res: Response, next: NextFunction) =
         { $push: { items: req.body.item } },
         { new: true }
       );
-      res.status(200).json(updateCategory);
+      res.status(200).json({
+        _id: updateCategory?._id,
+        category: updateCategory?.category,
+        item: [updateCategory?.items.slice(-1)[0]],
+      });
     } catch (error) {
       next(error);
     }
