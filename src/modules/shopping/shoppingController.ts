@@ -19,4 +19,11 @@ export const getHistoryItems = async (req: Request, res: Response, next: NextFun
   }
 };
 
-//TODO updateShoppingList
+export const getCurrentShoppingList = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const currentShoppingList = await HistoryShopping.findOne({ status: 'current' }).exec();
+    res.json(currentShoppingList);
+  } catch (error) {
+    next(error);
+  }
+};
