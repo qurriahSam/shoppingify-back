@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 import itemsRouter from './modules/items/itemsRouter';
 import shoppingRouter from './modules/shopping/shoppingRouter';
 import { errorHandler } from './middleware/errorHandler';
-
 import { connectDB } from './db/server';
+
 connectDB();
 
 dotenv.config();
