@@ -1,4 +1,4 @@
-export const seedData = [
+export const seedCategoryData = [
   {
     category: 'snacks',
     items: [
@@ -78,7 +78,22 @@ export const seedData = [
     category: 'beverages',
     items: [
       {
-        name: 'coke',
+        name: 'Juice',
+        image: 'http://jdsdsdeuw.com',
+        note: 'this is a note',
+      },
+      {
+        name: 'Soda 500ml',
+        image: 'http://jdsdsdeuw.com',
+        note: 'this is a note',
+      },
+      {
+        name: 'Beer',
+        image: 'http://jdsdsdeuw.com',
+        note: 'this is a note',
+      },
+      {
+        name: 'Water',
         image: 'http://jdsdsdeuw.com',
         note: 'this is a note',
       },

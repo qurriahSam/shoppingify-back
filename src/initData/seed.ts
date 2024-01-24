@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { seedData } from './data';
+import { seedCategoryData } from './data';
 import mongoose from 'mongoose';
 import { Category } from '../modules/items/itemsModel';
 
@@ -8,7 +8,7 @@ const URI = process.env.MONGO_URI;
 
 async function addInitData() {
   try {
-    await Category.insertMany(seedData);
+    await Category.insertMany(seedCategoryData);
     console.log('Seed data inserted successfully!');
   } catch (error) {
     console.error('Error inserting seed data:', error);
