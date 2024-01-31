@@ -13,11 +13,13 @@ export const getItems = async (req: Request, res: Response, next: NextFunction) 
 export const addItem = async (req: Request, res: Response, next: NextFunction) => {
   let category;
 
+  console.log(req.body);
+
   if (!req.body.category) {
     return next(new Error('category cannot be empty'));
   }
 
-  if (!req.body._id) {
+  if (!req.body.categoryId) {
     category = new Category({
       category: req.body.category,
       items: [req.body.item],
@@ -31,7 +33,7 @@ export const addItem = async (req: Request, res: Response, next: NextFunction) =
   } else {
     try {
       const updateCategory = await Category.findByIdAndUpdate(
-        req.body._id,
+        req.body.categoryId,
         { $push: { items: req.body.item } },
         { new: true }
       );
