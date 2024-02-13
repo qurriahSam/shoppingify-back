@@ -27,3 +27,13 @@ export const getCurrentShoppingList = async (req: Request, res: Response, next: 
     next(error);
   }
 };
+
+export const createShoppingList = async (req: Request, res: Response, next: NextFunction) => {
+  const newShoppingList = new HistoryShopping(req.body);
+  try {
+    const shoppingList = await newShoppingList.save();
+    res.status(200).json(shoppingList);
+  } catch (error) {
+    next(error);
+  }
+};
