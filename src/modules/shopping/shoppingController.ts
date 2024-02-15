@@ -37,3 +37,14 @@ export const createShoppingList = async (req: Request, res: Response, next: Next
     next(error);
   }
 };
+
+export const updateShoppingList = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const shoppingList = await HistoryShopping.findByIdAndUpdate(req.body._id, req.body, {
+      returnDocument: 'after',
+    });
+    res.status(200).json(shoppingList);
+  } catch (error) {
+    next(error);
+  }
+};

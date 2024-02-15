@@ -19,6 +19,7 @@ const HistoryShoppingSchema = new Schema<IShopping>({
     },
   ],
   status: String,
+  current: Boolean,
   date: Date,
 });
 

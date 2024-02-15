@@ -13,7 +13,7 @@ export const getItems = async (req: Request, res: Response, next: NextFunction) 
 export const addItem = async (req: Request, res: Response, next: NextFunction) => {
   let category;
 
-  console.log(req.body);
+  //  console.log(req.body);
 
   if (!req.body.category) {
     return next(new Error('category cannot be empty'));
@@ -37,12 +37,14 @@ export const addItem = async (req: Request, res: Response, next: NextFunction) =
         { $push: { items: req.body.item } },
         { new: true }
       );
+
       res.status(200).json({
         _id: updateCategory?._id,
         category: updateCategory?.category,
-        item: [updateCategory?.items.slice(-1)[0]],
+        items: [updateCategory?.items.slice(-1)[0]],
       });
     } catch (error) {
+      console.log(error);
       next(error);
     }
   }

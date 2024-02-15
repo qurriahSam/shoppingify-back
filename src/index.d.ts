@@ -22,6 +22,7 @@ interface IShopItems {
 export interface IShopping {
   title: string;
   list: IShopItems[];
-  status: boolean;
+  status: string;
+  current: boolean;
   date: Date;
 }
