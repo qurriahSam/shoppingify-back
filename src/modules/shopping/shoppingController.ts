@@ -3,7 +3,7 @@ import { HistoryShopping } from './shoppingModel';
 
 export const getHistory = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const items = await HistoryShopping.find().select('title status date');
+    const items = await HistoryShopping.find({ current: false }).select('title status date');
     res.json(items);
   } catch (error) {
     next(error);

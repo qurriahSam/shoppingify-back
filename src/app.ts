@@ -13,10 +13,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const corsOptions = {
+/* const corsOptions = {
   origin: 'https://shoppingify-lovat.vercel.app/',
   openSuccessStatus: 200,
-};
+}; */
 app.use(cors());
 
 app.use(itemsRouter);
