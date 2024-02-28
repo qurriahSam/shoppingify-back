@@ -21,7 +21,7 @@ export const getHistoryItems = async (req: Request, res: Response, next: NextFun
 
 export const getCurrentShoppingList = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const currentShoppingList = await HistoryShopping.findOne({ status: 'current' }).exec();
+    const currentShoppingList = await HistoryShopping.findOne({ current: true }).exec();
     res.json(currentShoppingList);
   } catch (error) {
     next(error);
