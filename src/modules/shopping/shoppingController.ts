@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { HistoryShopping } from './shoppingModel';
+import { Category } from '../items/itemsModel';
 
 export const getHistory = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -44,6 +45,18 @@ export const updateShoppingList = async (req: Request, res: Response, next: Next
       returnDocument: 'after',
     });
     res.status(200).json(shoppingList);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getShoppingStats = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const shoppingLists = await HistoryShopping.find({
+      $and: [{ 'list.items.complete': true }, { date: { $exists: true } }],
+    });
+    const categories = await Category.find().select('_id category');
+    res.status(200).json({ categories: categories, shoppingLists: shoppingLists });
   } catch (error) {
     next(error);
   }

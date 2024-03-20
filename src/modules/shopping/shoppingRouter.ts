@@ -5,6 +5,7 @@ import {
   getCurrentShoppingList,
   createShoppingList,
   updateShoppingList,
+  getShoppingStats,
 } from './shoppingController';
 
 const jsonParser = json();
@@ -15,5 +16,6 @@ shoppingRouter.post('/history', jsonParser, getHistoryItems);
 shoppingRouter.get('/current', getCurrentShoppingList);
 shoppingRouter.post('/newShopping', jsonParser, createShoppingList);
 shoppingRouter.post('/updateShopping', jsonParser, updateShoppingList);
+shoppingRouter.get('/stats', getShoppingStats);
 
 export default shoppingRouter;
