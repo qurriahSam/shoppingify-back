@@ -21,8 +21,14 @@ interface IShopItems {
 }
 export interface IShopping {
   title: string;
+  userId: string;
   list: IShopItems[];
   status: string;
   current: boolean;
   date: Date;
+}
+
+export interface IUser {
+  email: string;
+  password: string;
 }

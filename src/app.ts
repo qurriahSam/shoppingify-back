@@ -6,6 +6,7 @@ import itemsRouter from './modules/items/itemsRouter';
 import shoppingRouter from './modules/shopping/shoppingRouter';
 import { errorHandler } from './middleware/errorHandler';
 import { connectDB } from './db/server';
+import userRouter from './modules/users/usersRouter';
 
 connectDB();
 
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 3000;
 }; */
 app.use(cors());
 
+app.use(userRouter);
 app.use(itemsRouter);
 app.use(shoppingRouter);
 
