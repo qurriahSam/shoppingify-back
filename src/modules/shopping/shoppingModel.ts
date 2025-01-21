@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const HistoryShoppingSchema = new Schema<IShopping>({
   title: { type: String, required: true },
+  userId: { type: String, required: true },
   list: [
     {
       category: String,
@@ -23,4 +24,7 @@ const HistoryShoppingSchema = new Schema<IShopping>({
   date: Date,
 });
 
-export const HistoryShopping = mongoose.model('historyShopping', HistoryShoppingSchema);
+export const HistoryShopping = mongoose.model(
+  'historyShopping',
+  HistoryShoppingSchema
+);
